@@ -1,23 +1,28 @@
-const surpriseBtn = document.getElementById("surpriseBtn");
+const surpriseBtn =
+    document.getElementById("surpriseBtn");
 
-const hero = document.getElementById("hero");
+const hero =
+    document.getElementById("hero");
 
-const slideshow = document.getElementById("slideshow");
+const slideshow =
+    document.getElementById("slideshow");
 
-const finalMessage = document.getElementById("finalMessage");
+const finalMessage =
+    document.getElementById("finalMessage");
 
-const footer = document.getElementById("footer");
+const footer =
+    document.getElementById("footer");
 
-const song = document.getElementById("birthdaySong");
+const song =
+    document.getElementById("birthdaySong");
 
-const slides = document.querySelectorAll(".slide");
-
-const photoCounter = document.getElementById("photoCounter");
+const slides =
+    document.querySelectorAll(".slide");
 
 
 let currentSlide = 0;
+
 let slideTimer = null;
-let surpriseStarted = false;
 
 
 /* =================================
@@ -26,18 +31,11 @@ let surpriseStarted = false;
 
 surpriseBtn.addEventListener("click", function () {
 
-    if (surpriseStarted) {
-        return;
-    }
-
-    surpriseStarted = true;
-
-
     /* Start song */
 
     song.currentTime = 0;
 
-    song.play().catch(function (error) {
+    song.play().catch(function(error) {
 
         console.log(
             "Song could not start:",
@@ -57,7 +55,7 @@ surpriseBtn.addEventListener("click", function () {
     slideshow.style.display = "block";
 
 
-    /* Start from first photo */
+    /* Start first photo */
 
     currentSlide = 0;
 
@@ -77,7 +75,7 @@ surpriseBtn.addEventListener("click", function () {
 
 function showSlide(index) {
 
-    slides.forEach(function (slide) {
+    slides.forEach(function(slide) {
 
         slide.classList.remove("active");
 
@@ -90,20 +88,12 @@ function showSlide(index) {
 
     }
 
-
-    /* Update counter */
-
-    photoCounter.textContent =
-        (index + 1) +
-        " / " +
-        slides.length;
-
 }
 
 
 /* =================================
    SLIDESHOW
-   3 SECONDS PER PHOTO
+   3 SECONDS
 ================================= */
 
 function startSlideshow() {
@@ -116,17 +106,15 @@ function startSlideshow() {
         currentSlide++;
 
 
-        /* All 13 photos finished */
-
-        if (currentSlide >= slides.length) {
+        if (
+            currentSlide >= slides.length
+        ) {
 
             finishSlideshow();
 
             return;
         }
 
-
-        /* Show next photo */
 
         showSlide(currentSlide);
 
@@ -146,13 +134,6 @@ function finishSlideshow() {
     slideTimer = null;
 
 
-    /* Stop song */
-
-    song.pause();
-
-    song.currentTime = 0;
-
-
     /* Hide slideshow */
 
     slideshow.style.display = "none";
@@ -168,7 +149,11 @@ function finishSlideshow() {
     footer.style.display = "block";
 
 
-    /* Go to top */
+    /* Song continues playing */
+
+    /* Song will stop automatically
+       when the audio finishes */
+
 
     window.scrollTo({
         top: 0,
@@ -179,10 +164,10 @@ function finishSlideshow() {
 
 
 /* =================================
-   PRELOAD ALL PHOTOS
+   PRELOAD PHOTOS
 ================================= */
 
-slides.forEach(function (slide) {
+slides.forEach(function(slide) {
 
     const img =
         slide.querySelector("img");
