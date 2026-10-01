@@ -253,23 +253,10 @@ body {
 }
 
 
+/* Counter completely hidden */
+
 .photo-counter {
-    position: absolute;
-
-    top: 20px;
-    right: 20px;
-
-    z-index: 50;
-
-    color: white;
-
-    background: rgba(0,0,0,0.45);
-
-    padding: 8px 15px;
-
-    border-radius: 30px;
-
-    font-size: 14px;
+    display: none !important;
 }
 
 
@@ -317,12 +304,14 @@ body {
 }
 
 
-/* Full-screen message photo */
+/* =================================
+   FULL SCREEN MESSAGE PHOTO
+================================= */
 
 .message-bg {
     position: fixed;
 
-    inset: -15px;
+    inset: 0;
 
     background-image: url("message-photo.jpg");
 
@@ -332,28 +321,33 @@ body {
 
     background-repeat: no-repeat;
 
-    filter: blur(2px);
+    /* NO BLUR */
+    filter: none;
 
-    transform: scale(1.04);
+    transform: none;
 
     z-index: 0;
 }
 
 
-/* Dark overlay */
+/* =================================
+   LIGHT DARK OVERLAY
+================================= */
 
 .message-dark {
     position: fixed;
 
     inset: 0;
 
-    background: rgba(0, 0, 0, 0.42);
+    background: rgba(0, 0, 0, 0.25);
 
     z-index: 1;
 }
 
 
-/* Message directly over photo */
+/* =================================
+   MESSAGE DIRECTLY ON PHOTO
+================================= */
 
 .message-content {
     position: relative;
@@ -700,32 +694,39 @@ body {
 
     .message-content {
         width: 92%;
+
         padding: 35px 10px;
     }
 
     .message-small {
         font-size: 11px;
+
         letter-spacing: 2px;
     }
 
     .message-content h2 {
         font-size: 40px;
+
         margin-bottom: 20px;
     }
 
     .message-content p {
         font-size: 15px;
+
         line-height: 1.55;
+
         margin-bottom: 13px;
     }
 
     .message-content h1 {
         font-size: 30px;
+
         margin-top: 25px;
     }
 
     .from {
         font-size: 16px;
+
         margin-top: 20px;
     }
 
